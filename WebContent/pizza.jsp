@@ -27,8 +27,11 @@
                     <th>Price</th>
                     <th>Cart</th>
                 </tr>
-                <%@ page import="com.mai.pizza.Pizza,org.hibernate.*,org.hibernate.cfg.*,java.util.Iterator" %>
-                <%! int pizza_id;
+            <%@ page import="com.mai.pizza.Pizza,com.mai.util.SessionUtil,org.hibernate.Query,org.hibernate.Session" %>
+            <%@ page import="org.hibernate.SessionFactory" %>
+            <%@ page import="org.hibernate.cfg.Configuration" %>
+            <%@ page import="java.util.Iterator" %>
+            <%! int pizza_id;
                     String ingredient;
                     String price;
                     String name;
@@ -37,7 +40,7 @@
                 <%
                     Configuration cf = new Configuration();
                     cf.configure();
-                    SessionFactory sf = cf.buildSessionFactory();
+                    SessionFactory sf = SessionUtil.getSessionFactory();
                     session1 = sf.openSession();
 //Using from Clause
                     String SQL_QUERY = "from Pizza";
@@ -57,7 +60,7 @@
                     </td>
                     <td><%=price%>
                     </td>
-                    <td><a href="http://localhost:8080/test/CartServlet?productCode=<%=pizza_id%>&quantity=1">Add</a>
+                    <td><a href="/CartServlet?productCode=<%=pizza_id%>&quantity=1">Add</a>
                     </td>
                 </tr>
                 <%

@@ -37,7 +37,7 @@
                         <th>
                             <small>
                                 <input type="submit" value="Login"
-                                       onclick="location.href='http://localhost:8080/test/login_user.jsp'">
+                                       onclick="location.href='login_user.jsp'">
                             </small>
                         </th>
                 </table>
@@ -47,7 +47,7 @@
                     <th>
                         <small>
                             <input type="submit" value="Registration"
-                                   onclick="location.href='http://localhost:8080/test/registration.jsp'">
+                                   onclick="location.href='registration.jsp'">
                         </small>
                     </th>
                 </tr>

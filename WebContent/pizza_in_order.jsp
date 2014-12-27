@@ -28,8 +28,11 @@
                     <th>Name pizza</th>
                     <th>Count</th>
                 </tr>
-                <%@ page import="com.mai.pizza.Pizza_in_order,org.hibernate.*,org.hibernate.cfg.*,java.util.Iterator" %>
-                <%! int order_id;
+            <%@ page
+                    import="com.mai.pizza.Pizza_in_order,org.hibernate.Query,org.hibernate.Session,org.hibernate.SessionFactory" %>
+            <%@ page import="org.hibernate.cfg.Configuration" %>
+            <%@ page import="java.util.Iterator" %>
+            <%! int order_id;
                     int pizza_count;
                     String pizza_name;
                     Session session1 = null; %>
@@ -61,7 +64,7 @@
                 %>
 
             </table>
-            <a href="http://localhost:8080/test/orders.jsp">return to orders</a>
+            <a href="/orders.jsp">return to orders</a>
 
             <p>
         </div>

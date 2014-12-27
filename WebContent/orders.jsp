@@ -29,8 +29,11 @@
                     <th>open Details</th>
                     <th>Set status</th>
                 </tr>
-                <%@ page import="com.mai.pizza.Order,org.hibernate.*,org.hibernate.cfg.*,java.util.Iterator" %>
-                <%! int order_id;
+            <%@ page
+                    import="com.mai.pizza.Order,com.mai.util.SessionUtil,org.hibernate.Query,org.hibernate.Session,org.hibernate.SessionFactory" %>
+            <%@ page import="org.hibernate.cfg.Configuration" %>
+            <%@ page import="java.util.Iterator" %>
+            <%! int order_id;
                     java.math.BigDecimal final_price;
                     int status;
                     String name;
@@ -39,10 +42,10 @@
                 <%
                     Configuration cf = new Configuration();
                     cf.configure();
-                    SessionFactory sf = cf.buildSessionFactory();
+                    SessionFactory sf = SessionUtil.getSessionFactory();
                     session1 = sf.openSession();
 //Using from Clause
-                    String SQL_QUERY = "from Orders";
+                    String SQL_QUERY = "from orders";
                     Query query = session1.createQuery(SQL_QUERY);
                     Iterator it = query.iterate();
                     while (it.hasNext()) {
@@ -61,12 +64,12 @@
                     </td>
                     <td><%=status%>
                     </td>
-                    <td><a href="http://localhost:8080/test/pizza_in_order.jsp?orderCode=<%=order_id%>">Open order</a>
+                    <td><a href="/pizza_in_order.jsp?orderCode=<%=order_id%>">Open order</a>
                     </td>
                     <td>
-                        <form action="http://localhost:8080/test/orders.jsp" method="post" name="drop_down_box">
+                        <form action="/orders.jsp" method="post" name="drop_down_box">
                             <select name="menu" size="1">
-                                <option value="0">Первая позиция</option>
+                                <option value="0">Статус 1</option>
                                 <option selected="1" value="second">Вторая позиция</option>
                                 <option value="2">Третья позиция</option>
                                 <option value="3">Четвертая позиция</option>

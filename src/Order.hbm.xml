@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mai.pizza.Order" table="orders">
+        <id name="id" column="id" type="int">
+            <generator class="native"></generator>
+        </id>
+        <many-to-one name="user" class="com.mai.pizza.User"
+                     column="user" unique="true" not-null="true"
+                     cascade="all"></many-to-one>
+        <property name="status" column="status" type="int"></property>
+        <property name="final_price" column="final_price" type="java.math.BigDecimal"></property>
+    </class>
+</hibernate-mapping>

@@ -28,7 +28,6 @@
                class="menu_link">Registration</a></li>
         <%
             }
-
             if ("admin".equals(myname1)) {
         %>
         <li><a href="${pageContext.request.contextPath}/admin.jsp"

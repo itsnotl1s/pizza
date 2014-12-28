@@ -22,19 +22,17 @@
         <li><a href="${pageContext.request.contextPath}/logout_user.jsp"
                class="menu_link">Logout</a></li>
         <%
-            }
-            if ("admin".equals(myname1)) {
-                //if (myname1.toLowerCase().trim().equals("admin")){
-        %>
-        <li><a href="${pageContext.request.contextPath}/admin.jsp"
-               class="menu_link">Admin Panel </a></li>
-        <%
-        } else {
+            } else {
         %>
         <li><a href="${pageContext.request.contextPath}/registration.jsp"
                class="menu_link">Registration</a></li>
+        <%
+            }
 
-
+            if ("admin".equals(myname1)) {
+        %>
+        <li><a href="${pageContext.request.contextPath}/admin.jsp"
+               class="menu_link">Admin Panel </a></li>
         <%
             }
         %>

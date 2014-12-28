@@ -16,12 +16,12 @@
                         String myname =  (String)session.getAttribute("username");
                         int id =  (Integer)session.getAttribute("id");
                         if("admin".equals(myname)){
-                            out.println("Welcome  "+myname+" , Select a pizza.");
+                            out.println("Welcome  "+myname+" , check orders");
                         }
                         else {out.println("Please Login in");}
                         %>
                     <%int order_id =Integer.parseInt(request.getParameter("orderCode"));%>
-                <b>Order №<%=id%>
+                <b>Order Numero <%=id%>
                 </b>
             <table width="750" border="1" cellspacing="4">
                 <tr align="center">
@@ -29,7 +29,8 @@
                     <th>Count</th>
                 </tr>
             <%@ page
-                    import="com.mai.pizza.Pizza_in_order,org.hibernate.Query,org.hibernate.Session,org.hibernate.SessionFactory" %>
+                    import="com.mai.pizza.Pizza_in_order,com.mai.util.SessionUtil,org.hibernate.Query,org.hibernate.Session" %>
+                <%@ page import="org.hibernate.SessionFactory" %>
             <%@ page import="org.hibernate.cfg.Configuration" %>
             <%@ page import="java.util.Iterator" %>
             <%! int order_id;
@@ -41,10 +42,10 @@
 
                     Configuration cf = new Configuration();
                     cf.configure();
-                    SessionFactory sf = cf.buildSessionFactory();
+                    SessionFactory sf = SessionUtil.getSessionFactory();
                     session1 = sf.openSession();
 //Using from Clause
-                    String SQL_QUERY = "from Pizza_in_order o where o.order_id" + order_id;
+                    String SQL_QUERY = "from Pizza_in_order o where o.order_id=" + order_id;
                     Query query = session1.createQuery(SQL_QUERY);
                     Iterator it = query.iterate();
                     while (it.hasNext()) {
@@ -64,7 +65,7 @@
                 %>
 
             </table>
-            <a href="/orders.jsp">return to orders</a>
+            <a href="${pageContext.request.contextPath}/orders.jsp">return to orders</a>
 
             <p>
         </div>

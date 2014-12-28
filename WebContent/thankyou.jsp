@@ -8,12 +8,11 @@
     <link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<body>
 <div id="container">
     <%@ include file="header.jsp" %>
     <div id="main_content">
         <div class="content">
-            <%@ page import="com.mai.pizza.OrderDao,org.hibernate.*,org.hibernate.cfg.*" %>
+            <%@ page import="com.mai.pizza.OrderDao" %>
             <%int order_id = OrderDao.OrderMake(request, response); %>
             <h1 align="center">Thank you for Your order #<%=order_id%>. Come back again.</h1>
             <% session.removeAttribute("cart"); %>

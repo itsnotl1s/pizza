@@ -60,7 +60,7 @@
                     </td>
                     <td><%=price%>
                     </td>
-                    <td><a href="/CartServlet?productCode=<%=pizza_id%>&quantity=1">Add</a>
+                    <td><a href="${pageContext.request.contextPath}/CartServlet?productCode=<%=pizza_id%>&quantity=1">Add</a>
                     </td>
                 </tr>
                 <%

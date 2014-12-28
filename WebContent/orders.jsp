@@ -26,8 +26,7 @@
                     <th>Name Customer</th>
                     <th>Total Price</th>
                     <th>Status</th>
-                    <th>open Details</th>
-                    <th>Set status</th>
+                    <th>Open details</th>
                 </tr>
             <%@ page
                     import="com.mai.pizza.Order,com.mai.util.SessionUtil,org.hibernate.Query,org.hibernate.Session,org.hibernate.SessionFactory" %>
@@ -61,19 +60,19 @@
                     <td><%=name%>
                     </td>
                     <td><%=final_price%>
-                    </td>
-                    <td><%=status%>
-                    </td>
-                    <td><a href="/pizza_in_order.jsp?orderCode=<%=order_id%>">Open order</a>
-                    </td>
+
                     <td>
-                        <form action="/orders.jsp" method="post" name="drop_down_box">
-                            <select name="menu" size="1">
-                                <option value="0">Set status 0</option>
-                                <option value="1">Set status 1</option>
+                    <form action="${pageContext.request.contextPath}/UpdateServlet?orderCode=<%=order_id%>">
+                        <select id="change_status" name="menu" size="1">
+                            <option <%=(status == 0) ? "selected='selected'" : ""%> value="0">Status 0</option>
+                            <option <%=(status == 1) ? "selected='selected'" : ""%> value="1">Status 1</option>
                             </select>
+                        <a href="${pageContext.request.contextPath}/UpdateServlet?orderCode=<%=order_id%>">Change
+                            Status</a>
                         </form>
                     </td>
+                    <td><a href="${pageContext.request.contextPath}/pizza_in_order.jsp?orderCode=<%=order_id%>">Open
+                        order</a></td>
                 </tr>
                 <%
                     }

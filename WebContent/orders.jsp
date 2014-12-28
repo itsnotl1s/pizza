@@ -62,13 +62,13 @@
                     <td><%=final_price%>
 
                     <td>
-                    <form action="${pageContext.request.contextPath}/UpdateServlet?orderCode=<%=order_id%>">
-                        <select id="change_status" name="menu" size="1">
+                    <form action="${pageContext.request.contextPath}/UpdateServlet">
+                        <input type="hidden" name="orderCode" value="<%=order_id%>"/>
+                        <select name="menu" size="1">
                             <option <%=(status == 0) ? "selected='selected'" : ""%> value="0">Status 0</option>
                             <option <%=(status == 1) ? "selected='selected'" : ""%> value="1">Status 1</option>
                             </select>
-                        <a href="${pageContext.request.contextPath}/UpdateServlet?orderCode=<%=order_id%>">Change
-                            Status</a>
+                        <input type="submit" value="Change Status"/>
                         </form>
                     </td>
                     <td><a href="${pageContext.request.contextPath}/pizza_in_order.jsp?orderCode=<%=order_id%>">Open

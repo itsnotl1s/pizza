@@ -21,16 +21,20 @@ public class UpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int order_id = Integer.parseInt(request.getParameter("orderCode"));
-        int new_status = Integer.parseInt(request.getParameter("menu"));
+        String orderCode = request.getParameter("orderCode");
+        String menu = request.getParameter("menu");
+
+        int order_id = Integer.parseInt(orderCode);
+        int new_status = Integer.parseInt(menu);
 
         Session session1 = SessionUtil.getSessionFactory().openSession();
         session1.beginTransaction();
-        Order o = new Order();
-        o.setId(order_id);
+
+
+        Order o = (Order) session1.get(Order.class, order_id);
         o.setStatus(new_status);
         session1.update(o);
-        //session1.getTransaction().commit();
+        session1.getTransaction().commit();
         session1.flush();
         session1.close();
 

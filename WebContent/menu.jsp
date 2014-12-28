@@ -10,15 +10,14 @@
     <ul>
         <li><a href="${pageContext.request.contextPath}/index.jsp"
                class="menu_link">Main Page</a></li>
+        <%
+            String myname1 = (String) session.getAttribute("username");
+            if (myname1 != null) {%>
+
         <li><a href="${pageContext.request.contextPath}/pizza.jsp"
                class="menu_link">Pizza</a></li>
         <li><a href="${pageContext.request.contextPath}/cart.jsp"
                class="menu_link">Cart</a></li>
-
-
-        <%
-            String myname1 = (String) session.getAttribute("username");
-            if (myname1 != null) {%>
         <li><a href="${pageContext.request.contextPath}/logout_user.jsp"
                class="menu_link">Logout</a></li>
         <%

@@ -30,8 +30,12 @@
                 <input type="submit" value="Remove pizza"></form>
             <p>
 
-            <form action="<c:url value='/Pizza.jsp'/>">
+            <form action="<c:url value='/pizza.jsp'/>">
                 <input type="submit" value="Veiw pizza"></form>
+            <p>
+
+            <form action="<c:url value='/orders.jsp'/>">
+                <input type="submit" value="Veiw orders"></form>
             <p>
         </div>
         <%@ include file="menu.jsp" %>

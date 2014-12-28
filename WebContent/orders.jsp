@@ -45,7 +45,7 @@
                     SessionFactory sf = SessionUtil.getSessionFactory();
                     session1 = sf.openSession();
 //Using from Clause
-                    String SQL_QUERY = "from orders";
+                    String SQL_QUERY = "from Order";
                     Query query = session1.createQuery(SQL_QUERY);
                     Iterator it = query.iterate();
                     while (it.hasNext()) {
@@ -69,10 +69,8 @@
                     <td>
                         <form action="/orders.jsp" method="post" name="drop_down_box">
                             <select name="menu" size="1">
-                                <option value="0">Статус 1</option>
-                                <option selected="1" value="second">Вторая позиция</option>
-                                <option value="2">Третья позиция</option>
-                                <option value="3">Четвертая позиция</option>
+                                <option value="0">Set status 0</option>
+                                <option value="1">Set status 1</option>
                             </select>
                         </form>
                     </td>

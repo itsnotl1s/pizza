@@ -23,6 +23,8 @@
                 Name pizza:<input type="text" name="name"/><br><br/>
                 ingredients:<input type="text" name="ingredient"/><br><br/>
                 Price:<input type="text" name="price"/><br><br/>
+                <input type="radio" name="flag" value="1"> Yes, add<Br>
+                <input type="radio" name="flag" value="0"> add, without listing</p>
                 <input type="submit" value="Add pizza"/>
 
             </form>

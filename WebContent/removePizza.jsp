@@ -35,6 +35,7 @@
                 <%@ page import="org.hibernate.cfg.Configuration" %>
                 <%@ page import="java.util.Iterator" %>
                 <%! int pizza_id;
+                    String flag;
                     String ingredient;
                     String price;
                     String name;
@@ -51,6 +52,7 @@
                     Iterator it = query.iterate();
                     while (it.hasNext()) {
                         Pizza p = (Pizza) it.next();
+                        flag = p.getFlag();
                         pizza_id = p.getId();
                         name = p.getName();
                         ingredient = p.getIngredient();
@@ -63,7 +65,18 @@
                     </td>
                     <td><%=price%>
                     </td>
-                    <td><a href="/DeleteServlet?productCode=<%=pizza_id%>">Delete</a></td>
+
+                    <td>
+                        <form action="${pageContext.request.contextPath}/DeleteServlet">
+                            <input type="hidden" name="productCode" value="<%=pizza_id%>"/>
+                            <select name="flag" size="1">
+                                <option <%=("0".equals(flag)) ? "selected='selected'" : ""%> value="0">Hide (delete)
+                                </option>
+                                <option <%=("1".equals(flag)) ? "selected='selected'" : ""%> value="1">Unhide</option>
+                            </select>
+                            <input type="submit" value="Submit"/>
+                        </form>
+                    </td>
                 </tr>
                 <%
                     }
@@ -72,17 +85,6 @@
 
             </table>
 
-            <p>
-            <table align="center">
-                <tr>
-                    <th>
-                        <small>
-                            <input type="submit" value="To Cart"
-                                   onclick="location.href='/cart.jsp'">
-                        </small>
-                    </th>
-                </tr>
-            </table>
         </div>
         <%@ include file="menu.jsp" %>
         <div id="clear"></div>

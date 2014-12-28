@@ -32,27 +32,29 @@
             <%@ page import="org.hibernate.cfg.Configuration" %>
             <%@ page import="java.util.Iterator" %>
             <%! int pizza_id;
-                    String ingredient;
-                    String price;
-                    String name;
-                    Session session1 = null; %>
+                String flag;
+                String ingredient;
+                String price;
+                String name;
+                Session session1 = null; %>
 
-                <%
-                    Configuration cf = new Configuration();
-                    cf.configure();
-                    SessionFactory sf = SessionUtil.getSessionFactory();
-                    session1 = sf.openSession();
+            <%
+                Configuration cf = new Configuration();
+                cf.configure();
+                SessionFactory sf = SessionUtil.getSessionFactory();
+                session1 = sf.openSession();
 //Using from Clause
-                    String SQL_QUERY = "from Pizza";
-                    Query query = session1.createQuery(SQL_QUERY);
-                    Iterator it = query.iterate();
-                    while (it.hasNext()) {
-                        Pizza p = (Pizza) it.next();
-                        pizza_id = p.getId();
-                        name = p.getName();
-                        ingredient = p.getIngredient();
-                        price = p.getPrice();
-                %>
+                String SQL_QUERY = "from Pizza";
+                Query query = session1.createQuery(SQL_QUERY);
+                Iterator it = query.iterate();
+                while (it.hasNext()) {
+                    Pizza p = (Pizza) it.next();
+                    flag = p.getFlag();
+                    pizza_id = p.getId();
+                    name = p.getName();
+                    ingredient = p.getIngredient();
+                    price = p.getPrice();
+                    if ("1".equals(flag)) {%>
                 <tr align="center">
                     <td><%=name%>
                     </td>
@@ -63,7 +65,8 @@
                     <td><a href="${pageContext.request.contextPath}/CartServlet?productCode=<%=pizza_id%>&quantity=1">Add</a>
                     </td>
                 </tr>
-                <%
+            <%
+                    }
                     }
                     session1.close();
                 %>

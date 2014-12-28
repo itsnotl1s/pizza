@@ -10,7 +10,6 @@
 <body>
 <%
     String myname = (String) session.getAttribute("username");
-    int id = (Integer) session.getAttribute("id");
     if (myname.toLowerCase().trim().equals("admin")) {
         out.println("Welcome  " + myname + " , Select a pizza.");
 %>
@@ -27,7 +26,7 @@
             <p>
 
             <form action="<c:url value='/removePizza.jsp'/>">
-                <input type="submit" value="Remove pizza"></form>
+            <input type="submit" value="Remove or return pizza"></form>
             <p>
 
             <form action="<c:url value='/pizza.jsp'/>">

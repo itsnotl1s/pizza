@@ -8,16 +8,14 @@
     <link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<%
-    String myname = (String) session.getAttribute("username");
-    if (myname.toLowerCase().trim().equals("admin")) {
-        out.println("Welcome  " + myname + " , Select a pizza.");
-%>
 <div id="container">
     <%@ include file="header.jsp" %>
     <div id="main_content">
         <div class="content">
-            <h1 align="center">Welcome!!</h1>
+            <%
+                String myname = (String) session.getAttribute("username");
+                if (myname.toLowerCase().trim().equals("admin")) {
+            %><h1 align=\"center\"><% out.println("Welcome " + myname + "!!"); %></h1>
 
             <p>
 
@@ -36,15 +34,15 @@
             <form action="<c:url value='/orders.jsp'/>">
                 <input type="submit" value="Veiw orders"></form>
             <p>
+                    <%
+    } else {
+        out.println("Please Login in");
+    }
+%>
         </div>
         <%@ include file="menu.jsp" %>
         <div id="clear"></div>
     </div>
 </div>
-<%
-    } else {
-        out.println("Please Login in");
-    }
-%>
 </body>
 </html>
